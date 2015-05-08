@@ -319,6 +319,7 @@ $\pagebreak$
 ## `ggplot2` Plotting System
 * `library(ggplot2)` = loads ggplot2 package
 * implementation of Grammar of Graphics by Leland Wilkinson, written by Hadley Wickham (created RStudio)
+
 > "In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (color, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system"
 * grammar graphics plot, splits the different between base and lattice systems
 * automatically sets spacings/text/tiles but also allows annotations to be added
