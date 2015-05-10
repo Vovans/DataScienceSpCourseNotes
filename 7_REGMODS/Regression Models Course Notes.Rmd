@@ -2,16 +2,14 @@
 title: "Regression Models Course Notes"
 author: "Xing Su"
 output:
-  html_document:
-    highlight: pygments
-    theme: spacelab
-    toc: yes
   pdf_document:
     toc: yes
     toc_depth: 3
+  html_document:
+    toc: yes
 header-includes: \usepackage{graphicx} \usepackage{color} \usepackage{mathtools}
 ---
-
+$\pagebreak$
 
 ## Introduction to Regression
 * linear regression/linear models $\rightarrow$ go to procedure to analyze data
@@ -72,7 +70,7 @@ $$
 	- $Cor(X, Y) = 0$ implies no linear relationship
 
 
-
+$\pagebreak$
 
 ## Dalton's Data and Least Squares
 * collected data from 1885 in `UsingR` package
@@ -130,7 +128,7 @@ g <- g + scale_colour_gradient(low = "lightblue", high="white")
 g
 ```
 
-
+$\pagebreak$
 
 ### Derivation for Least Squares = Empirical Mean (Finding the Minimum)
 * Let $X_i$ = **regressor**/**predictor**, and $Y_i =$ **outcome**/**result** so we want to minimize the the squares: $$\sum_{i=1}^n (Y_i - \mu)^2$$
@@ -156,7 +154,7 @@ Y_i & = \mu \\
 \end{aligned}
 $$
 
-
+$\pagebreak$
 
 ## Regression through the Origin
 * Let $X_i =$ parents' heights (**regressor**) and $Y_i =$ children's heights (**outcome**)
@@ -207,7 +205,7 @@ $$
     * ***Note**: this is the result from our previous derivation for least squares = empirical mean *
 
 
-
+$\pagebreak$
 
 ## Finding the Best Fit Line (Ordinary Least Squares)
 * best fitted line for predictor, $X$, and outcome, $Y$ is derived from the **least squares** $$\sum_{i=1}^n \{Y_i - (\beta_0 + \beta_1 X_i)\}^2$$
@@ -325,7 +323,7 @@ g <- g + geom_smooth(method="lm", formula=y~x)
 g
 ```
 
-
+$\pagebreak$
 
 ## Regression to the Mean
 * first investigated by Francis Galton in the paper _"Regression towards mediocrity in hereditary stature" The Journal of the Anthropological Institute of Great Britain and Ireland , Vol. 15, (1886)_
@@ -381,7 +379,7 @@ g = g + geom_text(x = 3.8, y = 1.6, label="x~y", angle = 25) +
 g
 ```
 
-
+$\pagebreak$
 
 ## Statistical Linear Regression Models
 * goal is use statistics to draw inferences $\rightarrow$ generalize from data to population through models
@@ -505,7 +503,7 @@ lines(c(0.34, 0.34, 0.12), c(200, coef(fit)[1] + coef(fit)[2] * 0.34,
 text(newx+c(0.03, 0, 0), rep(250, 3), labels = newx, pos = 2)
 ```
 
-
+$\pagebreak$
 
 ### Derivation for Maximum Likelihood Estimator
 * ***Note**: this derivation is for the maximum likelihood estimator of the mean, $\mu$, of a normal distribution as it is the basis of the linear regression model *
@@ -550,7 +548,7 @@ $$
 $$
 
 
-
+$\pagebreak$
 
 ## Residuals
 * Residual, $e_i$ = difference between the observed and predicted outcome $$e_i = Y_i - \hat Y_i$$
@@ -733,7 +731,7 @@ multiplot(g, f, cols = 2)
 ```
 
 
-
+$\pagebreak$
 
 ## Inference in Regression
 * statistics used for hypothesis tests and confidence intervals have the following attributes $$\frac{\hat \theta - \theta}{\hat \sigma_{\hat \theta}} \sim N(0,1)$$
@@ -882,7 +880,7 @@ lines(xVals,yVals+2*se1); lines(xVals,yVals-2*se1)
 lines(xVals,yVals+2*se2); lines(xVals,yVals-2*se2)
 ```
 
-
+$\pagebreak$
 
 ## Multivariate Regression
 * linear models = most important applied statistical/machine learning technique
@@ -1092,7 +1090,7 @@ lm(Fertility ~ . + z, data = swiss)$coef
 * as we can see above, the R dropped the unnecessary variable `z` by excluding it from the linear regression $\rightarrow$ `z`'s coefficient is `NA`
 
 
-
+$\pagebreak$
 
 ## Dummy Variables
 * **dummy variables** = binary variables that take on value of **1** when the measurement is in a particular group, and **0** when the measurement is not (i.e. in clinical trials, treated = 1, untreated = 1)
@@ -1204,7 +1202,7 @@ summary(lm(count ~ spray2, data = InsectSprays))$coef
 	- ***Poisson GLMs*** are better (don't have to worry about the assumptions) for fitting count data
 
 
-
+$\pagebreak$
 
 ## Interactions
 * **interactions** between variables can be added to a regression model to test how the outcomes change under different conditions
@@ -1347,7 +1345,7 @@ hunger$Income <- 1:nrow(hunger)*10 + 500*runif(nrow(hunger), 0, 10) +
 lm(Numeric ~ Year*Income, data = hunger)$coef
 ```
 
-
+$\pagebreak$
 
 ## Multivariable Simulation
 * we will generate a series of simulated data so that we know the true relationships, and then run linear regressions to interpret and compare the results to truth
@@ -1641,7 +1639,7 @@ abline(lm(I(resid(lm(y ~ x2))) ~ I(resid(lm(x1 ~ x2)))), lwd = 2)
 * variable selection simply affects associations between outcome and predictors, using the model to formulate causal relationship are even more difficult (entire field dedicated to this $\rightarrow$ ***causal inference***)
 
 
-
+$\pagebreak$
 
 ## Residuals and Diagnostics
 * recall that the **generalized linear model** is defined as $$Y_i =  \sum_{k=1}^p X_{ik} \beta_j + \epsilon_{i}$$ where $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$
@@ -1835,7 +1833,7 @@ summary(fit)$coef
 plot(predict(fit), resid(fit), pch = '.')
 ```
 
-
+$\pagebreak$
 
 ## Model Selection
 
@@ -2113,7 +2111,7 @@ step(fit, k = log(nrow(mtcars)))
 ```
 
 * as we can see from above, the best model that captures most of the variability in the data is simply `mpg ~ cyl + wt`
-
+$\pagebreak$
 
 ## General Linear Models Overview
 * limitations of linear models:
@@ -2212,7 +2210,7 @@ $$ where $W_i = \frac{\partial g^{-1}(\mu_i)}{\mu_i}$ or the derivative of the i
 * **coefficients** are interpreted as the ***expected change in the link function*** of the expected response ***per unit change*** in $X_k$ holding other regressors constant, or $$\beta_k = g(E[Y | X_k = x_k + 1, X_{\sim k} = x_{\sim k}]) - g(E[Y | X_k = x_k, X_{\sim k}=x_{\sim k}])$$
 
 
-
+$\pagebreak$
 
 ## General Linear Models - Binary Models
 * **Bernoulli/binary** models are frequently used to model outcomes that have two values
@@ -2373,7 +2371,7 @@ anova(logRegRavens,test="Chisq")
 * [Open Intro Chapter on Logistic Regression](http://www.openintro.org/stat/down/oiStat2_08.pdf)
 
 
-
+$\pagebreak$
 
 ## General Linear Models - Poisson Models
 * **Poisson distribution** is a useful model for counts and rates
@@ -2591,7 +2589,7 @@ lines(julian(gaData$date),glm2$fitted/(gaData$visits+1),col="blue",lwd=3)
 	- the function `zeroinfl` fits zero inflated Poisson (ziP) models to such data
 
 
-
+$\pagebreak$
 
 ## Fitting Functions
 * **scatterplot smoothing** = fitting functions (multiple linear models, piece-wise zig-zag lines) to data in the form $Y_i = f(X_i) + \epsilon_i$

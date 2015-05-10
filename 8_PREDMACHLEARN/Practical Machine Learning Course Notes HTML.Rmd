@@ -14,7 +14,7 @@ header-includes: \usepackage{graphicx} \usepackage{mathtools}
 
 ## Prediction
 
-* **process for prediction** = population --> probability and sampling to pick set of data --> split into training and test set --> build prediction function --> predict for new data --> evaluate
+* **process for prediction** = population $\rightarrow$ probability and sampling to pick set of data $\rightarrow$ split into training and test set $\rightarrow$ build prediction function $\rightarrow$ predict for new data $\rightarrow$ evaluate
 	- ***Note**: choosing the right dataset and knowing what the specific question is are paramount to the success of the prediction algorithm (GoogleFlu failed to predict accurately when people's search habits changed) *
 
 ```{r fig.width = 4, fig.height = 3, fig.align = 'center', echo = FALSE, message = FALSE}
@@ -23,15 +23,15 @@ library(doMC); registerDoMC(cores = 4)
 grid.raster(readPNG("figures/1.png"))
 ```
 
-* **components of predictor** = question --> input data --> features _(extracting variables/characteristics)_ --> algorithm --> parameters _(estimate)_ --> evaluation
+* **components of predictor** = question $\rightarrow$ input data $\rightarrow$ features _(extracting variables/characteristics)_ $\rightarrow$ algorithm $\rightarrow$ parameters _(estimate)_ $\rightarrow$ evaluation
 * **relative order of importance** = question (concrete/specific) **>** data (relevant) **>** features (properly extract) **>** algorithms
 * **data selection**
-	- ***Note**: "garbage in = garbage out" --> having the correct/relevant data will decide whether the model is successful *
+	- ***Note**: "garbage in = garbage out" $\rightarrow$ having the correct/relevant data will decide whether the model is successful *
 	- data for what you are trying to predict is most helpful
-	- more data --> better models (usually)
+	- more data $\rightarrow$ better models (usually)
 * **feature selection**
-	- good features --> lead to data compression, retain relevant information, created based on expert domain knowledge
-	- common mistakes --> automated feature selection (can yield good results but likely to behave inconsistently with slightly different data), not understanding/dealing with skewed data/outliers, throwing away information unnecessarily
+	- good features = lead to data compression, retain relevant information, created based on expert domain knowledge
+	- common mistakes = automated feature selection (can yield good results but likely to behave inconsistently with slightly different data), not understanding/dealing with skewed data/outliers, throwing away information unnecessarily
 * **algorithm selection**
 	- matter less than one would expect
 	- getting a sensible approach/algorithm will be the basis for a successful prediction
@@ -134,6 +134,7 @@ rbind("Rule 1" = c(Accuracy = mean(rule1(spam$capitalAve)==spam$type),
 ```{r echo = FALSE, fig.width = 3, fig.height = 4, fig.align = 'center'}
 grid.raster(readPNG("figures/2.png"))
 ```
+
 ### Sample Division Guidelines for Prediction Study Design
 * for large sample sizes
 	- 60% training
@@ -160,7 +161,7 @@ grid.raster(readPNG("figures/2.png"))
 * use like data to predict like
 * to predict a variable/process X, use the data that's as closely related to X as possible
 * weighting the data/variables by understanding and intuition can help to improve accuracy of prediction
-* data properties matter --> knowing how the data connects to what you are trying to measure
+* data properties matter $\rightarrow$ knowing how the data connects to what you are trying to measure
 * predicting on unrelated data is the most common mistake
 	- if unrelated data must be used, be careful about interpreting the model as to why it works/doesn't work
 
@@ -211,10 +212,9 @@ grid.raster(readPNG("figures/6.png"))
 
 
 
-
 ## Receiver Operating Characteristic Curves
 * predictions for binary classification often are quantitative (i.e. probability, scale of 1 to 10)
-	- different cutoffs/threshold of classification (> 0.8 --> one outcome) yield different results/predictions
+	- different cutoffs/threshold of classification (> 0.8 $\rightarrow$ one outcome) yield different results/predictions
 	- **Receiver Operating Characteristic** curves are generated to compare the different outcomes
 
 ```{r echo = FALSE, fig.width = 4, fig.height = 4, fig.align = 'center'}
@@ -226,10 +226,10 @@ grid.raster(readPNG("figures/7.png"))
 	- ***y-axis*** = sensitivity (or, probability of true positive)
 	- ***points plotted*** = cutoff/combination
 	- ***areas under curve*** = quantifies whether the prediction model is viable or not
-		+ higher area --> better predictor
-		+ area = 0.5 --> effectively random guessing (diagonal line in the ROC curve)
-		+ area = 1 --> perfect classifier
-		+ area = 0.8 --> considered good for a prediction algorithm
+		+ higher area $\rightarrow$ better predictor
+		+ area = 0.5 $\rightarrow$ effectively random guessing (diagonal line in the ROC curve)
+		+ area = 1 $\rightarrow$ perfect classifier
+		+ area = 0.8 $\rightarrow$ considered good for a prediction algorithm
 
 ```{r echo = FALSE, fig.width = 3, fig.height = 3, fig.align = 'center'}
 grid.raster(readPNG("figures/8.png"))
@@ -270,6 +270,7 @@ grid.raster(readPNG("figures/9.png"))
 ```{r echo = FALSE, fig.width = 3, fig.height = 3, fig.align = 'center'}
 grid.raster(readPNG("figures/10.png"))
 ```
+
 * a randomly sampled test set is subsetted out from the original training set
 * the predictor is built on the remaining training data and applied to the test set
 * the above are ***three*** random subsamplings from the same training set
@@ -284,6 +285,7 @@ grid.raster(readPNG("figures/10.png"))
 ```{r echo = FALSE, fig.width = 3, fig.height = 3, fig.align = 'center'}
 grid.raster(readPNG("figures/11.png"))
 ```
+
 * break training set into $K$ subsets (above is a 3-fold cross validation)
 * build the model/predictor on the remaining training data in each subset and applied to the test subset
 * rebuild the data $K$ times with the training and test subsets and average the findings
@@ -296,6 +298,7 @@ grid.raster(readPNG("figures/11.png"))
 ```{r echo = FALSE, fig.width = 3, fig.height = 3, fig.align = 'center'}
 grid.raster(readPNG("figures/12.png"))
 ```
+
 * leave out exactly one sample and build predictor on the rest of training data
 * predict value for the left out sample
 * repeat for each sample
