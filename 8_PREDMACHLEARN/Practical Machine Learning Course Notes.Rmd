@@ -2,18 +2,18 @@
 title: "Practical Machine Learning Course Notes"
 author: "Xing Su"
 output:
+  pdf_document:
+    toc: yes
+    toc_depth: 3
   html_document:
     highlight: pygments
     theme: spacelab
     toc: yes
-  pdf_document:
-    toc: yes
-    toc_depth: 3
 header-includes: \usepackage{graphicx} \usepackage{mathtools}
 ---
 
 
-
+$\pagebreak$
 
 
 ## Prediction
@@ -103,7 +103,7 @@ rbind("Rule 1" = c(Accuracy = mean(rule1(spam$capitalAve)==spam$type),
 	"Total Correct" = sum(rule2(spam$capitalAve)==spam$type)))
 ```
 
-
+$\pagebreak$
 
 ## Prediction Study Design
 * **procedures**
@@ -170,7 +170,7 @@ grid.raster(readPNG("figures/2.png"))
 	- if unrelated data must be used, be careful about interpreting the model as to why it works/doesn't work
 
 
-
+$\pagebreak$
 
 ## Types of Errors
 * when discussing the outcome decided on by the algorithm, __Positive__ = identified and __negative__ = rejected
@@ -216,7 +216,7 @@ grid.raster(readPNG("figures/6.png"))
 - **median absolute deviation** = $$median(|Prediction_i - Truth_i|)$$
 
 
-
+$\pagebreak$
 
 ## Receiver Operating Characteristic Curves
 * are commonly used techniques to measure the quality of a prediction algorithm.
@@ -251,7 +251,7 @@ grid.raster(readPNG("figures/9.png"))
 
 
 
-
+$\pagebreak$
 
 ## Cross Validation
 * **procedures**
@@ -313,7 +313,7 @@ grid.raster(readPNG("figures/12.png"))
 
 
 
-
+$\pagebreak$
 
 ## `caret` Package ([tutorial](http://www.edii.uclm.es/~useR-2013/Tutorials/kuhn/user_caret_2up.pdf))
 * **core functionality**
@@ -624,7 +624,7 @@ quantile(capAve - capAveTruth)
 ```
 
 
-
+$\pagebreak$
 
 ## Covariate Creation/Feature Extraction
 * **[level 1]**: construct covariate (usable metric, feature) from raw data depends heavily on application
@@ -715,7 +715,7 @@ head(predict(bsBasis,age=testing$age))
 
 
 
-
+$\pagebreak$
 
 ## Preprocessing with Principal Component Analysis (PCA)
 * constructing a prediction model may not require every predictor
@@ -796,7 +796,7 @@ confusionMatrix(testing$type,predict(modelFit,testing))
 
 
 
-
+$\pagebreak$
 
 ## Predicting with Regression
 * **prediction with regression** = fitting regression model (line) to data $\rightarrow$ multiplying each variable by coefficients to predict outcome
@@ -908,7 +908,7 @@ plot(finMod$residuals,pch=19,cex=0.5)
 
 
 
-
+$\pagebreak$
 
 ## Prediction with Trees
 * **prediction with trees** = iteratively split variables into groups (effectively constructing decision trees) $\rightarrow$ produces nonlinear model
@@ -1080,7 +1080,7 @@ points(ozone$ozone,predict(treebag,predictors),pch=19,col="blue")
 ```
 
 
-
+$\pagebreak$
 
 ## Random Forest
 * **random forest** = extension of bagging on classification/regression trees
@@ -1151,7 +1151,7 @@ qplot(Petal.Width,Petal.Length,colour=predRight,data=testing,main="newdata Predi
 
 
 
-
+$\pagebreak$
 
 ## Boosting
 * **boosting** = one of the most widely used and accurate prediction models, along with random forest
@@ -1215,7 +1215,7 @@ print(modFit)
 ```
 
 
-
+$\pagebreak$
 
 ## Model Based Prediction
 * **model based prediction** = assumes the data follow a probabilistic model/distribution and use _Bayes' theorem_ to identify optimal classifiers/variables
@@ -1340,7 +1340,7 @@ qplot(Petal.Width,Sepal.Width,colour=equalPredictions,data=testing)
 
 
 
-
+$\pagebreak$
 
 ## Model Selection
 * the general behavior of the errors of the training and test sets are as follows
@@ -1649,7 +1649,7 @@ lasso.cv <- cv.lars(as.matrix(x), y, K=10, type="lasso", trace=TRUE)
 
 
 
-
+$\pagebreak$
 
 ## Combining Predictors
 * **combining predictors** = also known as [_ensembling methods in learning_](http://en.wikipedia.org/wiki/Ensemble_learning), combine classifiers by averaging/voting to improve accuracy (generally)
@@ -1738,7 +1738,7 @@ rbind(test = c(glm = sqrt(sum((glm.pred.test-testing$wage)^2)),
 
 
 
-
+$\pagebreak$
 
 ## Forecasting
 * **forecasting** = typically used with time series, predict one or more observations into the future
@@ -1854,7 +1854,7 @@ accuracy(fcast,ts.test)
 
 
 
-
+$\pagebreak$
 
 ## Unsupervised Prediction
 * **supervised classification** = predicting outcome when we know what the different classifications are
